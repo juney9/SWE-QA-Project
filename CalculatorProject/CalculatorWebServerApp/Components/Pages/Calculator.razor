@@ -1,0 +1,83 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<!-- Setup -->
+<head>
+    <title>Calculator</title>
+    <PageTitle>Calculator</PageTitle>
+</head>
+
+
+<div class="calculator">
+    <table>
+        <!-- Top row Calculator text and Clear button -->
+        <tr>
+            <h4>Calculator</h4>
+            <td><button style="float:left"  @onclick ="ClearResult">Clear</button></td>
+        </tr>
+            
+        <!-- Results box -->
+        <tr>
+            <td colspan="2">
+                <div class="@ResultStyle" style= "margin-top:auto; text-align: center">
+                    @if (_result == null) {
+                        <span>Enter values below and select an operation.</span>
+                    }
+                    
+                    else if (_result.IsSuccess&&!_result.IsSuccess2) {
+                        <span>@_result.Operation</span>
+                        <span><br/>@_result.Result</span>
+                    }
+                    else if (_result.IsSuccess2) {
+                        <span>@_result.Operation</span>
+                        <span><br/>@_result.ResultString</span>
+                    }
+                    
+                    else if (!_result.IsSuccess) {
+                        <span>@_result.Operation</span>
+                        <span><br/><i>@_result.Error</i></span>
+                    }
+                </div>
+            </td>
+        </tr>
+
+        
+        <tr>
+            <th>Values</th>
+            
+        </tr>
+            
+        <!-- Input box -->
+        <tr>
+            <td>
+                <textarea rows="4" cols="52" type="text"  aria-label = "inputBoxA" @bind="_inputA"></textarea>
+            </td>
+        </tr>
+            
+        <!-- Header for operation buttons -->
+        <tr>
+            <div>
+                <td><b>Descriptive Statistic</b></td>
+            </div>
+        </tr>
+            <br>
+        <!-- All of the operation buttons -->
+        <div class="d-grid gap-2">
+            <button @onclick="ComputeSampleStdDev">Compute Sample Standard Deviation | one value per line</button>
+            <button @onclick="ComputePopStdDev">Compute Population Standard Deviation | one value per line</button>
+            <button @onclick="ComputeMean">Compute Mean | one value per line</button>
+            <button @onclick="ComputeZScore">Compute Z Score | value, mean, stdDev on one line</button>
+        </div>
+        <br>
+        <tr>
+            <div>
+                <td><b>Single Linear Regression</b></td>
+            </div>
+        </tr>
+        <br>
+        <div class="d-grid gap-2">
+            <button @onclick="ComputeSingleLinearRegression">Compute Single Linear Regression Formula | one x,y pair per line</button>
+            <button @onclick="ComputeYSingleLinearRegression">Predict Y from Linear Regression Formula | x, m, b on one line</button>
+        </div>
+    </table>
+    </div>
