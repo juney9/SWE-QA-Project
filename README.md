@@ -147,4 +147,4 @@ Build succeeded with 2 warning(s) in 7.7s
 
 
 ## Final Video Presentation
-[![Video Link]()]()
+[![Video Link](https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg)](https://youtu.be/YyUSFXV9sag)
